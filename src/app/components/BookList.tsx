@@ -118,19 +118,19 @@ export function BookList({ books }: BookListProps) {
   return (
     <div className="w-full max-w-7xl mx-auto p-6 md:p-10 space-y-12">
       <div className="space-y-8">
-        <div className="space-y-3 border-b pb-6">
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60">
+        <div className="space-y-4 border-b pb-6">
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60 pb-2">
             Premium Bogsamling
           </h1>
-          <p className="text-xl text-muted-foreground font-medium">
-            {filteredAndSortedBooks.length} håndplukkede værker fundet
-          </p>
         </div>
 
         <div className="flex justify-center">
-          <div className="max-w-4xl w-full bg-amber-100 border-2 border-amber-300 text-amber-900 px-6 py-4 rounded-xl shadow-md text-center">
+          <div className="max-w-4xl w-full bg-amber-100 border-2 border-amber-300 text-amber-900 px-6 py-6 rounded-xl shadow-md text-center space-y-4">
             <p className="text-xl md:text-2xl font-black uppercase tracking-widest italic">
               Jeg giver det <span className="line-through decoration-amber-600/60 decoration-4">hele</span> meste væk
+            </p>
+            <p className="text-base md:text-lg font-medium leading-relaxed">
+              Jeg rydder ud i min bogsamling. Jeg skal af med ca. 90% af de næsten 400 bøger. Det skal væk inden starten af april (2026). Hvis du er interesseret, så kontakt mig.
             </p>
           </div>
         </div>
@@ -255,7 +255,7 @@ export function BookList({ books }: BookListProps) {
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground group-focus-within:text-primary transition-colors" />
             <Input
               type="text"
-              placeholder="Søg i biblioteket (titel, forfatter, ISBN...)"
+              placeholder="Søg i bogsamlingen (titel, forfatter, ISBN...)"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-12 py-6 text-lg rounded-xl border-muted-foreground/20 focus:border-primary/50 focus:ring-primary/20 transition-all shadow-sm"

@@ -80,7 +80,7 @@ export function BookList({ books }: BookListProps) {
   return (
     <div className="w-full max-w-7xl mx-auto p-6 space-y-6">
       <div className="space-y-2">
-        <h1 className="text-3xl font-bold">Bogbibliotek</h1>
+        <h1 className="text-3xl font-bold">Bøger</h1>
         <p className="text-muted-foreground">
           {filteredAndSortedBooks.length} {filteredAndSortedBooks.length === 1 ? "bog" : "bøger"} fundet
         </p>

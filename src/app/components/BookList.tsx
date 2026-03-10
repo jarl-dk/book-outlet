@@ -1,7 +1,8 @@
+import { Search, ArrowUpDown, ArrowUp, ArrowDown, ExternalLink, ChevronDown, ChevronRight } from "lucide-react";
 import { useState, useMemo, ReactNode } from "react";
 import { Book } from "../data/books";
+import CopyButton from "./ui/copy-button";
 import { Input } from "./ui/input";
-import { Search, ArrowUpDown, ArrowUp, ArrowDown, ExternalLink, ChevronDown, ChevronRight } from "lucide-react";
 
 interface BookListProps {
   books: Book[];
@@ -61,7 +62,16 @@ export function BookList({ books }: BookListProps) {
   };
 
   const handleBookClick = (isbn: string) => {
-    // Remove hyphens from ISBN for Amazon URL
+    // 1. Tjek om brugeren har markeret tekst
+    const selection = window.getSelection();
+
+    // Hvis selection.toString() ikke er tom, betyder det, at brugeren
+    // er i gang med at markere tekst – så skal vi IKKE navigere.
+    if (selection && selection.toString().length > 0) {
+      return;
+    }
+
+    // 2. Hvis ingen tekst er markeret, fortsæt som normalt
     const cleanIsbn = isbn.replace(/-/g, "");
     const amazonUrl = `https://www.amazon.co.uk/s?k=${cleanIsbn}`;
     window.open(amazonUrl, "_blank", "noopener,noreferrer");
@@ -88,7 +98,7 @@ export function BookList({ books }: BookListProps) {
       result = [...result].sort((a, b) => {
         const aValue = a[sortKey];
         const bValue = b[sortKey];
-        
+
         const comparison = aValue.localeCompare(bValue, 'da');
         return sortDirection === "asc" ? comparison : -comparison;
       });
@@ -159,9 +169,9 @@ export function BookList({ books }: BookListProps) {
             </div>
           </div>
 
-          <a 
-            href="https://photos.app.goo.gl/RxiK36Hwr8CJec2dA" 
-            target="_blank" 
+          <a
+            href="https://photos.app.goo.gl/RxiK36Hwr8CJec2dA"
+            target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-primary hover:underline font-medium pt-2"
           >
@@ -279,11 +289,15 @@ export function BookList({ books }: BookListProps) {
                   className="hover:bg-muted/30 transition-colors cursor-pointer group"
                   onClick={() => handleBookClick(book.isbn13)}
                 >
-                  <td className="px-4 py-3">{book.titel}</td>
+                  <td className="px-4 py-3"><CopyButton textToCopy={book.titel} /> {book.titel}
+                  </td>
                   <td className="px-4 py-3 text-muted-foreground">{book.forfattere}</td>
                   <td className="px-4 py-3 text-muted-foreground">{book.forlag}</td>
-                  <td className="px-4 py-3 font-mono text-sm text-muted-foreground">
-                    {book.isbn13}
+                  <td className="px-4 py-3 font-mono text-sm text-muted-foreground whitespace-nowrap">
+                    <div className="flex items-center gap-2">
+                      <span>{book.isbn13}</span>
+                      <CopyButton textToCopy={book.isbn13} />
+                    </div>
                   </td>
                   <td className="px-4 py-3 text-muted-foreground">{book.år}</td>
                   <td className="px-4 py-3">

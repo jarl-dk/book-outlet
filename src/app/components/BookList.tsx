@@ -33,7 +33,7 @@ export function BookList({ books }: BookListProps) {
   const handleBookClick = (isbn: string) => {
     // Remove hyphens from ISBN for Amazon URL
     const cleanIsbn = isbn.replace(/-/g, "");
-    const amazonUrl = `https://www.amazon.co.uk/dp/${cleanIsbn}`;
+    const amazonUrl = `https://www.amazon.co.uk/s?k=${cleanIsbn}`;
     window.open(amazonUrl, "_blank", "noopener,noreferrer");
   };
 

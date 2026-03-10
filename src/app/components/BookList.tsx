@@ -325,7 +325,7 @@ export function BookList({ books }: BookListProps) {
                   >
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="hidden sm:block">
+                        <div className="hidden sm:block opacity-0 group-hover/row:opacity-100 transition-opacity">
                           <CopyButton textToCopy={book.titel} />
                         </div>
                         <span className="font-semibold text-foreground group-hover/row:text-primary transition-colors leading-snug">
@@ -336,9 +336,11 @@ export function BookList({ books }: BookListProps) {
                     <td className="px-6 py-4 text-sm text-muted-foreground">{book.forfattere}</td>
                     <td className="px-6 py-4 text-sm text-muted-foreground">{book.forlag}</td>
                     <td className="px-6 py-4 font-mono text-xs text-muted-foreground/70 whitespace-nowrap">
-                      <div className="flex items-center gap-2 opacity-60 group-hover/row:opacity-100 transition-opacity">
+                      <div className="flex items-center gap-2">
                         <span>{book.isbn13}</span>
-                        <CopyButton textToCopy={book.isbn13} />
+                        <div className="opacity-0 group-hover/row:opacity-100 transition-opacity">
+                          <CopyButton textToCopy={book.isbn13} />
+                        </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 text-sm text-center text-muted-foreground font-medium">{book.år}</td>

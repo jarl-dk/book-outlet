@@ -28,7 +28,7 @@ const CopyButton: React.FC<CopyButtonProps> = ({ textToCopy }) => {
         type="button"
         className="inline-flex items-center justify-center w-8 h-8 rounded-md 
                    hover:bg-accent hover:text-accent-foreground transition-colors
-                   opacity-0 group-hover:opacity-100 focus:opacity-100"
+                   focus:opacity-100"
         title="Kopier"
       >
         {isCopied ? (

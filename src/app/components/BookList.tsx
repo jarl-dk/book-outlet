@@ -127,6 +127,14 @@ export function BookList({ books }: BookListProps) {
           </p>
         </div>
 
+        <div className="flex justify-center">
+          <div className="max-w-4xl w-full bg-amber-100 border-2 border-amber-300 text-amber-900 px-6 py-4 rounded-xl shadow-md text-center">
+            <p className="text-xl md:text-2xl font-black uppercase tracking-widest italic">
+              Jeg giver det <span className="line-through decoration-amber-600/60 decoration-4">hele</span> meste væk
+            </p>
+          </div>
+        </div>
+
         <div className="relative overflow-hidden bg-gradient-to-br from-muted/40 via-muted/20 to-background p-8 md:p-12 rounded-2xl border border-primary/10 shadow-xl flex justify-center">
           <div className="max-w-4xl space-y-6 relative w-full">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight leading-tight">

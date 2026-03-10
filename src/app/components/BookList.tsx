@@ -156,6 +156,19 @@ export function BookList({ books }: BookListProps) {
             <li><strong>Hvorfor eje den?</strong> Den fungerer som en komplet "opskrift" på, hvordan man kører et succesfuldt softwareteam fra idé til produktion.</li>
           </ul>
         </ExpandableBox>
+
+        <ExpandableBox title="Open Source, Infrastructure & Full-Stack-pakken (~45 bøger)">
+          <p className="text-sm text-muted-foreground leading-relaxed italic">
+            Den perfekte pakke til DevOps-engineeren eller Full-stack-udvikleren. Den er præget af de ikoniske O'Reilly "dyrebøger" og dækker hele økosystemet omkring moderne webudvikling.
+          </p>
+          <ul className="text-sm text-muted-foreground leading-relaxed list-disc list-inside space-y-1">
+            <li><strong>Sprog & Web:</strong> Komplette serier om <strong>Python, Perl, JavaScript</strong> (inkl. Flanagan og Stefanov) samt <strong>RESTful API'er</strong> og <strong>Ajax</strong>.</li>
+            <li><strong>Infrastruktur & Ops:</strong> Alt om <strong>Git, Subversion, Docker, Vagrant, DNS & BIND, SSH</strong> og <strong>Network Security</strong>.</li>
+            <li><strong>Data:</strong> Dybdegående guides til <strong>MySQL, PostgreSQL</strong> og <strong>Data Warehousing</strong>.</li>
+            <li><strong>Kultur & Licensering:</strong> De vigtige værker om Open Source-filosofi og jura (Stallman, Raymond, Lessig).</li>
+            <li><strong>Hvorfor eje den?</strong> Fordi den dækker de praktiske værktøjer, der holder internettet kørende hver eneste dag.</li>
+          </ul>
+        </ExpandableBox>
       </div>
 
       <div className="relative">

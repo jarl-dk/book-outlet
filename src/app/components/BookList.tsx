@@ -1,10 +1,40 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, ReactNode } from "react";
 import { Book } from "../data/books";
 import { Input } from "./ui/input";
 import { Search, ArrowUpDown, ArrowUp, ArrowDown, ExternalLink, ChevronDown, ChevronRight } from "lucide-react";
 
 interface BookListProps {
   books: Book[];
+}
+
+interface ExpandableBoxProps {
+  title: string;
+  children: ReactNode;
+}
+
+function ExpandableBox({ title, children }: ExpandableBoxProps) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <div className="border rounded-lg overflow-hidden bg-muted/10">
+      <button
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="w-full flex items-center justify-between p-4 hover:bg-muted/20 transition-colors text-left"
+      >
+        <span className="font-medium">{title}</span>
+        {isExpanded ? (
+          <ChevronDown className="h-5 w-5 text-muted-foreground" />
+        ) : (
+          <ChevronRight className="h-5 w-5 text-muted-foreground" />
+        )}
+      </button>
+      {isExpanded && (
+        <div className="p-4 border-t border-muted-foreground/10 bg-background/50 animate-in fade-in slide-in-from-top-1 duration-200 space-y-3">
+          {children}
+        </div>
+      )}
+    </div>
+  );
 }
 
 type SortKey = keyof Book;
@@ -14,7 +44,6 @@ export function BookList({ books }: BookListProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortKey, setSortKey] = useState<SortKey | null>(null);
   const [sortDirection, setSortDirection] = useState<SortDirection>(null);
-  const [isExpanded, setIsExpanded] = useState(false);
 
   const handleSort = (key: SortKey) => {
     if (sortKey === key) {
@@ -104,32 +133,29 @@ export function BookList({ books }: BookListProps) {
           </a>
         </div>
 
-        <div className="border rounded-lg overflow-hidden bg-muted/10">
-          <button
-            onClick={() => setIsExpanded(!isExpanded)}
-            className="w-full flex items-center justify-between p-4 hover:bg-muted/20 transition-colors text-left"
-          >
-            <span className="font-medium">Den Store C++ & Systemarkitektur-pakke (~40 bøger)</span>
-            {isExpanded ? (
-              <ChevronDown className="h-5 w-5 text-muted-foreground" />
-            ) : (
-              <ChevronRight className="h-5 w-5 text-muted-foreground" />
-            )}
-          </button>
-          {isExpanded && (
-            <div className="p-4 border-t border-muted-foreground/10 bg-background/50 animate-in fade-in slide-in-from-top-1 duration-200 space-y-3">
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                Dette er uden tvivl samlingens tungeste og mest værdifulde pakke rent teknisk. Den dækker alt fra de helt lave lag i operativsystemet til de mest avancerede C++ templates.
-              </p>
-              <ul className="text-sm text-muted-foreground leading-relaxed list-disc list-inside space-y-1">
-                <li><strong>Kernen:</strong> Den komplette samling af <strong>Bjarne Stroustrup, Scott Meyers, Herb Sutter</strong> og <strong>Andrei Alexandrescu</strong>.</li>
-                <li><strong>Netværk & System:</strong> Hele <strong>W. Richard Stevens'</strong> katalog (<em>TCP/IP Illustrated, Unix Network Programming</em>) samt <strong>Tanenbaums</strong> klassikere om operativsystemer og netværk.</li>
-                <li><strong>Biblioteker & Patterns:</strong> Alt om <strong>Boost, STL, CORBA, ACE</strong> og de klassiske <strong>Design Patterns</strong> (GoF).</li>
-                <li><strong>Hvorfor købe den?</strong> Fordi den indeholder stort set alt, hvad der er skrevet af betydning om C++ og systemprogrammering de sidste 30 år.</li>
-              </ul>
-            </div>
-          )}
-        </div>
+        <ExpandableBox title="Den Store C++ & Systemarkitektur-pakke (~40 bøger)">
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Dette er uden tvivl samlingens tungeste og mest værdifulde pakke rent teknisk. Den dækker alt fra de helt lave lag i operativsystemet til de mest avancerede C++ templates.
+          </p>
+          <ul className="text-sm text-muted-foreground leading-relaxed list-disc list-inside space-y-1">
+            <li><strong>Kernen:</strong> Den komplette samling af <strong>Bjarne Stroustrup, Scott Meyers, Herb Sutter</strong> og <strong>Andrei Alexandrescu</strong>.</li>
+            <li><strong>Netværk & System:</strong> Hele <strong>W. Richard Stevens'</strong> katalog (<em>TCP/IP Illustrated, Unix Network Programming</em>) samt <strong>Tanenbaums</strong> klassikere om operativsystemer og netværk.</li>
+            <li><strong>Biblioteker & Patterns:</strong> Alt om <strong>Boost, STL, CORBA, ACE</strong> og de klassiske <strong>Design Patterns</strong> (GoF).</li>
+            <li><strong>Hvorfor købe den?</strong> Fordi den indeholder stort set alt, hvad der er skrevet af betydning om C++ og systemprogrammering de sidste 30 år.</li>
+          </ul>
+        </ExpandableBox>
+
+        <ExpandableBox title="Den Ultimative Agile & Software Leadership-pakke (~35 bøger)">
+          <p className="text-sm text-muted-foreground leading-relaxed italic">
+            Denne pakke er skræddersyet til den moderne it-organisation, tech-leads eller Scrum Masters. Den handler mindre om kode og mere om, hvordan man bygger kvalitet og værdi.
+          </p>
+          <ul className="text-sm text-muted-foreground leading-relaxed list-disc list-inside space-y-1">
+            <li><strong>Processer:</strong> En massiv samling af <strong>Mike Cohn, Kent Beck</strong> og <strong>Gojko Adzic</strong>. Alt om Scrum, XP, User Stories, BDD og Retrospectives.</li>
+            <li><strong>Software Design & Kvalitet:</strong> Klassikere som <strong>Martin Fowlers</strong> <em>Refactoring</em>, <strong>Steve McConnells</strong> <em>Code Complete</em> og <strong>Michael Nygards</strong> <em>Release It!</em>.</li>
+            <li><strong>Startup & Ledelse:</strong> Moderne klassikere som <em>The Lean Startup</em>, <em>Rework</em>, <em>The Mom Test</em> og <strong>Joel on Software</strong>.</li>
+            <li><strong>Hvorfor eje den?</strong> Den fungerer som en komplet "opskrift" på, hvordan man kører et succesfuldt softwareteam fra idé til produktion.</li>
+          </ul>
+        </ExpandableBox>
       </div>
 
       <div className="relative">

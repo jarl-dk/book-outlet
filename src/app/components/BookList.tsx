@@ -130,8 +130,14 @@ export function BookList({ books }: BookListProps) {
               Jeg giver det <span className="line-through decoration-amber-600/60 decoration-4">hele</span> meste væk
             </p>
             <p className="text-base md:text-lg font-medium leading-relaxed">
-              Jeg rydder ud i min bogsamling. Jeg skal af med ca. 90% af de næsten 400 bøger. Det skal væk inden starten af april (2026). Hvis du er interesseret, så kontakt mig.
+              Jeg rydder ud i min bogsamling. Jeg skal af med ca. 95% af de næsten 400 bøger. Det skal væk inden starten af april (2026). Hvis du er interesseret, så kontakt mig.
             </p>
+          </div>
+        </div>
+
+        <div className="relative overflow-hidden bg-gradient-to-br from-muted/40 via-muted/20 to-background p-8 md:p-12 rounded-2xl border border-primary/10 shadow-xl flex justify-center">
+          <div className="max-w-4xl w-full text-base md:text-lg leading-relaxed text-muted-foreground/90 italic">
+            Dette projekt har jeg lavet sammen med min søn som et vibe-coding projekt. Boglisten er lavet af Gemini ud fra billeder af bogreolen. Texterne der beskriver bogsamlingen er formuleret af Gemini. Koden er skabt af AI blandt via Figma og Webstorm Junie.
           </div>
         </div>
 

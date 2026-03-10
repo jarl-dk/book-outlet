@@ -117,16 +117,53 @@ export function BookList({ books }: BookListProps) {
           </p>
         </div>
 
-        <div className="bg-muted/30 p-4 rounded-lg border border-muted-foreground/10 space-y-3">
-          <p className="text-sm md:text-base leading-relaxed">
-            Dette er en samling af bøger, der spænder over mange forskellige genrer og emner. 
-            Samlingen indeholder alt fra faglitteratur og klassikere til moderne skønlitteratur.
-          </p>
+        <div className="bg-muted/30 p-6 rounded-lg border border-muted-foreground/10 space-y-6">
+          <div className="space-y-4">
+            <h2 className="text-xl font-bold">Det Ultimative Bibliotek til Softwareingeniøren og IT-Arkitekten</h2>
+            <p className="text-sm md:text-base leading-relaxed">
+              Er du på udkig efter at bygge (eller fuldende) det perfekte tekniske opslagsværk? Her udbydes en massiv og kurateret bogsamling, der spænder over otte hylder af ren it-historie og teknisk dybde.
+            </p>
+            <p className="text-sm md:text-base leading-relaxed">
+              Dette er ikke blot "gamle computerbøger" – det er de fundamentale værker, som moderne software er bygget på. Samlingen er ideel til den seriøse udvikler, studerende, eller som et imponerende referencebibliotek til kontoret.
+            </p>
+
+            <div className="space-y-3">
+              <h3 className="font-bold">Højdepunkter i samlingen:</h3>
+              <ul className="text-sm md:text-base leading-relaxed list-disc list-inside space-y-2">
+                <li>
+                  <strong>De Store Klassikere (The Holy Grails):</strong> Indeholder den komplette "Millennium Edition" af <strong>Donald E. Knuths <em>The Art of Computer Programming</em></strong> samt bibelen over alle bibler: <strong>Kernighan & Ritchies <em>The C Programming Language</em></strong>.
+                </li>
+                <li>
+                  <strong>Systemprogrammering og Netværk:</strong> En næsten komplet samling af <strong>W. Richard Stevens'</strong> legendariske værker, herunder <strong><em>UNIX Network Programming</em></strong> og <strong><em>TCP/IP Illustrated</em></strong>-serien.
+                </li>
+                <li>
+                  <strong>C++ Masterclass:</strong> Alt hvad hjertet begærer inden for C++ med tunge navne som <strong>Bjarne Stroustrup, Scott Meyers</strong> (Effective C++), <strong>Herb Sutter</strong> og <strong>Andrei Alexandrescu</strong>.
+                </li>
+                <li>
+                  <strong>Agile, Lean og Software Design:</strong> Bliv mester i proces med klassikere fra <strong>Martin Fowler</strong> (<em>Refactoring</em>), <strong>Kent Beck</strong> (<em>Test-Driven Development</em>), og <strong>Robert C. Martin</strong>. Desuden en stærk sektion om <strong>User Stories</strong> og <strong>Lean Startup</strong>.
+                </li>
+                <li>
+                  <strong>Open Source og Kultur:</strong> Vigtige værker om bevægelsens filosofi af <strong>Eric S. Raymond</strong> (<em>The Cathedral & the Bazaar</em>) og <strong>Lawrence Lessig</strong>.
+                </li>
+                <li>
+                  <strong>Specialiserede emner:</strong> Stor samling af de ikoniske "dyrebøger" fra <strong>O'Reilly</strong> om alt fra Linux Device Drivers og Network Security til Perl, Python og JavaScript.
+                </li>
+              </ul>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="font-bold">Hvorfor eje denne samling?</h3>
+              <p className="text-sm md:text-base leading-relaxed">
+                Selvom vi lever i en digital tidsalder, er dybden i disse fysiske værker uovertruffen. Her får du uforkortede teorier bag algoritmer, netværksprotokoller og systemarkitektur, præsenteret af de originale pionerer. De fleste bøger er fra anerkendte kvalitetsforlag som <strong>Addison-Wesley, O'Reilly, Manning</strong> og <strong>Prentice Hall</strong>.
+              </p>
+            </div>
+          </div>
+
           <a 
             href="https://photos.app.goo.gl/RxiK36Hwr8CJec2dA" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
+            className="inline-flex items-center gap-2 text-primary hover:underline font-medium pt-2"
           >
             Se billeder af alle bøgerne i Google Photos-albummet
             <ExternalLink className="h-4 w-4" />

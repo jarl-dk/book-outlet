@@ -85,6 +85,7 @@ export function BookList({ books }: BookListProps) {
           book.titel.toLowerCase().includes(search) ||
           book.forfattere.toLowerCase().includes(search) ||
           book.forlag.toLowerCase().includes(search) ||
+          book.emne.toLowerCase().includes(search) ||
           book.isbn13.toLowerCase().includes(search) ||
           book.år.toLowerCase().includes(search)
         );
@@ -303,6 +304,15 @@ export function BookList({ books }: BookListProps) {
                   </th>
                   <th
                     className="px-6 py-5 font-bold text-sm uppercase tracking-wider cursor-pointer hover:bg-muted/60 transition-colors select-none"
+                    onClick={() => handleSort("emne")}
+                  >
+                    <div className="flex items-center gap-2">
+                      Emne
+                      {getSortIcon("emne")}
+                    </div>
+                  </th>
+                  <th
+                    className="px-6 py-5 font-bold text-sm uppercase tracking-wider cursor-pointer hover:bg-muted/60 transition-colors select-none"
                     onClick={() => handleSort("isbn13")}
                   >
                     <div className="flex items-center gap-2">
@@ -341,6 +351,7 @@ export function BookList({ books }: BookListProps) {
                     </td>
                     <td className="px-6 py-4 text-sm text-muted-foreground">{book.forfattere}</td>
                     <td className="px-6 py-4 text-sm text-muted-foreground">{book.forlag}</td>
+                    <td className="px-6 py-4 text-sm text-muted-foreground">{book.emne}</td>
                     <td className="px-6 py-4 font-mono text-xs text-muted-foreground/70 whitespace-nowrap">
                       <div className="flex items-center gap-2">
                         <span>{book.isbn13}</span>
